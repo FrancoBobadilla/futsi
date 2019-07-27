@@ -9,13 +9,13 @@ class Page extends React.Component {
             <div>
                 <div className="box">
                     <div className="navbar">
-                        <img src={fulbito}></img>
+                        <img src={fulbito} alt="fulbito"></img>
                         <span>Futsi</span>
                         <ul className='u-list'>
                             <li><button>Sign In</button></li>
-                            <li><a href="#" >Home</a></li>
-                            <li><a href="#" >Contact</a></li>
-                            <li><a href="#" >About</a></li>
+                            <li><a href="/" >Home</a></li>
+                            <li><a href="/" >Contact</a></li>
+                            <li><a href="/" >About</a></li>
                         </ul>
                     </div>
                 </div>

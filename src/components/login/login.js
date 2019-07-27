@@ -1,23 +1,19 @@
 import React from 'react';
 
-
-// import googleLogo from '../images/google-48';
-// import facebookLogo from '../images/facebook-48';
+import googleLogo from '../../images/google-48.png';
 import './loginstyles.css';
 
-class Login extends React.Component{
+class Login extends React.Component{    
+    
     render(){
         return (
             <div>
             <div className="loginBox">
             <h1>Join us</h1>
                 <div className="login-elements">  
-                    {/* <a href="#" className="btnGoogle">
-                        <img src={googleLogo} />
-                    </a> */}
-                    {/* <a href="#" className="btnFacebook">
-                            <img src={facebookLogo} />
-                        </a> */}
+                    <a href="/" className="btnGoogle">
+                        <img src={googleLogo} alt='Google logo'></img>
+                    </a>
                     <div className="margin-styles">
                         <input type="email" className="inputs" placeholder="Email" />
                     </div>
@@ -31,14 +27,11 @@ class Login extends React.Component{
                         <span>
                             Not a member?
                         </span>
-                        <a href="#" >
+                        <a href="/" >
                             Sign up now
                         </a>
                     </div>
                 </div>
-            </div>
-            <div className="info-box">
-                <p>info and presentation</p>
             </div>
         </div>
         )}
