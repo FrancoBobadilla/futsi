@@ -1,0 +1,51 @@
+.box {
+  font-family: 'Titillium Web', sans-serif;
+  background-color:rgb(44, 44, 44);
+}
+
+.navbar{
+    width:80%;
+    margin: auto;
+}
+
+.u-list{
+    margin: 0;
+    list-style-type: none;
+    overflow: hidden;
+}
+  
+
+  li .link:hover {
+    background: rgb(22, 22, 22);
+    padding: 14px 16px;
+  }
+  
+  li .link {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    float: left;
+  }
+
+
+  li button {
+    float: right;
+    margin: 10px 16px;
+    padding: 5px 15px;
+    border: 2px solid white;
+    border-radius: 5px;
+    color: white;
+    background: rgb(44,44,44);  
+  }
+
+  li button:hover{
+      background: white;
+      color: rgb(44,44,44);
+  }
+
+  .navbar img {
+    float: left;
+    padding: 7px;
+  }
