@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Login from './components/login/login';
-import Page from './components/prcpage/prcpage'
+import LogIn from './components/login';
+// import Navbar from './components/navbar'
+// import SignUp from './components/signup'
+// import App from './App'
 import * as serviceWorker from './serviceWorker';
 
-import Firebase, * as firebase from './components/Firebase/config'
-let app = new Firebase();
-app.init();
+import * as firebase from './components/Firebase/firebaseConfig'
 
-ReactDOM.render(<Login />, document.getElementById('root'));
+firebase.init();
+
+ReactDOM.render(<LogIn />, document.getElementById('root'));
 
 serviceWorker.unregister();
