@@ -49,3 +49,7 @@
     float: left;
     padding: 7px;
   }
+
+  #avatar{
+    float: right;
+  }
