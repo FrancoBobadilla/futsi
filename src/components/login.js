@@ -5,30 +5,10 @@ import 'firebase/auth'
 
 import googleLogo from '../images/google-48.png';
 import './styles/login.css';
+import { AuthContext } from './context/auth';
 // import Home from './home'
 
 class Login extends React.Component{
-	constructor(props){
-		super(props);
-	
-		this.state = { user: null };
-	
-		this.authListener = this.authListener.bind(this);
-	  }
-	
-	  componentDidMount(){
-		this.authListener();
-	  }
-	
-	  authListener(){
-		firebase.auth().onAuthStateChanged( user => {
-			if(user)
-				this.setState({ user });
-			else
-				this.setState({ user: null });
-		})
-	}
-
 
     async loginWithEmail(e){
 
@@ -69,8 +49,6 @@ class Login extends React.Component{
 
     render(){
         return (
-            // <div>
-            // 	<Navbar />
             	<div className="body" >
             		<div className="loginBox">
             			<h1>Join us</h1>
@@ -107,10 +85,12 @@ class Login extends React.Component{
                     		</Link>
                 		</div>
             		</div>
-					{this.state.user != null ? <Redirect to="/"/> : null}
+					{this.context.user != null ? <Redirect to="/"/> : null}
         		</div>
-        	// </div>
         )}
 }
+
+// This is how we access the context
+Login.contextType = AuthContext;
 
 export default Login;
