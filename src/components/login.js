@@ -1,12 +1,33 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import firebase from 'firebase/app';
 import 'firebase/auth'
 
 import googleLogo from '../images/google-48.png';
 import './styles/login.css';
+// import Home from './home'
 
 class Login extends React.Component{
+	constructor(props){
+		super(props);
+	
+		this.state = { user: null };
+	
+		this.authListener = this.authListener.bind(this);
+	  }
+	
+	  componentDidMount(){
+		this.authListener();
+	  }
+	
+	  authListener(){
+		firebase.auth().onAuthStateChanged( user => {
+			if(user)
+				this.setState({ user });
+			else
+				this.setState({ user: null });
+		})
+	}
 
 
     async loginWithEmail(e){
@@ -22,8 +43,9 @@ class Login extends React.Component{
         const result = await firebase.auth().signInWithEmailAndPassword(email,password);
 
         try{
-            if(result.user.emailVerified)
-                console.log('User verified, correctly logged');
+            if(result.user.emailVerified){
+				console.log('User verified, correctly logged');
+			}
             else{
                 console.log('User not verified');
             }
@@ -85,6 +107,7 @@ class Login extends React.Component{
                     		</Link>
                 		</div>
             		</div>
+					{this.state.user != null ? <Redirect to="/"/> : null}
         		</div>
         	// </div>
         )}
