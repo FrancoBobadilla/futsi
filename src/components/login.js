@@ -1,13 +1,39 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import firebase from "firebase/app";
-
-import googleLogo from "../images/google-48.png";
-import "./styles/login.css";
+import { GoogleLoginButton } from "react-social-login-buttons";
+import {
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+  Modal,
+  ModalBody,
+  ModalHeader
+} from "reactstrap";
 import { AuthContext } from "./context/auth";
-// import Home from './home'
+
+import "./styles/login.css";
+import Signup from "./signup";
 
 class Login extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.toggleModal = this.toggleModal.bind(this);
+
+    this.state = {
+      modal: false
+    };
+  }
+
+  toggleModal() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  }
+
   async loginWithEmail(e) {
     //get the values of the imputs
     const email = document.querySelector("#email").value;
@@ -42,38 +68,46 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="body">
-        <div className="loginBox">
-          <h1>Join us</h1>
-          <button onClick={this.logInWithGoogle} className="btnGoogle">
-            <img src={googleLogo} alt="Google logo"></img>
-          </button>
-          <form>
-            <input
-              id="email"
-              type="email"
-              className="inputs"
-              placeholder="Email"
-            />
-            <input
-              id="password"
-              type="password"
-              className="inputs"
-              placeholder="Password"
-            />
-          </form>
-          <div className="margins-styles">
-            <button onClick={this.loginWithEmail} className="btnSignIn">
-              Sign In
-            </button>
-          </div>
-          <div className="margin-styles">
-            <span>Not a member?</span>
-            <Link to="/signup">Sign up now</Link>
-          </div>
-        </div>
-        {this.context.user != null ? <Redirect to="/" /> : null}
-      </div>
+      <Form className="login-form">
+        <FormGroup>
+          <Label for="email">Email</Label>
+          <Input type="email" name="email" id="email" placeholder="Email" />
+        </FormGroup>
+        <FormGroup>
+          <Label for="password">Password</Label>
+          <Input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+          />
+        </FormGroup>
+        <Button className="bnt-lg btn-block" onClick={this.loginWithEmail}>
+          Log In
+        </Button>
+        <GoogleLoginButton
+          className="mt-3"
+          iconSize="24px"
+          onClick={this.logInWithGoogle}
+        />
+        <p className="text-center">
+          Not a member?
+          <Button
+            onClick={this.toggleModal}
+            className="font-weight-bold"
+            size="sm"
+            outline
+          >
+            Sign up now.
+            <Modal isOpen={this.state.modal} toggle={this.toggleModal}>
+              <ModalHeader toggle={this.toggleModal}> Sign Up </ModalHeader>
+              <ModalBody>
+                <Signup />
+              </ModalBody>
+            </Modal>
+          </Button>
+        </p>
+      </Form>
     );
   }
 }

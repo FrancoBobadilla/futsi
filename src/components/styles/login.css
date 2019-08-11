@@ -1,74 +1,10 @@
-
-.body {
-    display: flex;
-    justify-content: center;
-    align-items: center;   
-    font-family: 'Titillium Web', sans-serif;
-    color: black;
+.login-form {
+  margin: auto;
+  width: 330px;
+  height: 100%;
+  padding: 20px;
 }
 
-.loginBox{ 
-    position: absolute;
-    top: 20%;
-    text-align: center;
-    height: 400px;
-    width: 300px;
-    padding: 30px ;
-    background-color: white; 
-    border: 1px solid black; 
-    border-radius: 5px;
+p {
+  padding-top: 20px;
 }
-
-.margin-styles{
-    margin:30px;
-}
-
-.btnSignIn {
-    padding: 10px 50px;
-    font-size: 15px;
-    font-weight: 700;
-    color: white;
-    background-color: rgb(44,44,44);
-    border: 2px solid rgb(44,44,44);
-    border-radius: 5px;
-    cursor: pointer;
-    width: max-content;
-    transition: 0.25s ease;
-}
-
-.btnSignIn:hover {
-    color: rgb(44,44,44);
-    background-color: transparent;
-}
-
-.inputs{  
-    padding: 10px 30px;
-    border: none;
-    border-bottom: 2px solid rgb(44,44,44);
-    background: transparent;
-    outline: none;
-    margin-bottom:30px;
-}
-
-.margin-styles span{
-    color: black;
-    font-weight: 500;
-}
-
-.margin-styles a{
-    color: black;
-    font-weight: 700;
-}
-.margin-styles a:hover{
-    color: rgb(44,44,44);
-    font-weight: 700;
-}
-
-.btnGoogle{
-    margin: 10px; 
-    border: 2px solid transparent;
-    border-radius: 10px;
-    background: transparent;
-}
-
-

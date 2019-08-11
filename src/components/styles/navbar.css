@@ -1,14 +1,33 @@
-.box {
-  font-family: 'Titillium Web', sans-serif;
-  background-color:rgb(44, 44, 44);
+.navbar-box {
+  background: rgb(44, 44, 44);
+  height: 60px;
+}
+.nav{
+  width: 80%;
+  margin: auto;
+  color: white;
 }
 
-.navbar{
-    width:80%;
-    margin: auto;
-    height: 50px;
+.avatar-dropdown{
+  float: right;
+} 
+.nav-items{
+  color: white;
 }
 
+.ml-auto{
+  padding: 0px;
+}
+
+.signout-avatar{
+margin: 20px;
+}
+
+#btnSingIn{
+ margin: 10px;
+}
+
+/* 
 .u-list{
     margin: 0;
     list-style-type: none;
@@ -65,5 +84,4 @@
   #avatar{
     float: right;
     padding: 5px;
-  }
-
+  } */
