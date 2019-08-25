@@ -5,9 +5,6 @@ import { AuthContextProvider } from "./components/context/auth";
 
 import "./index.css";
 import App from "./App";
-// import Login from "./components/login";
-// import Navbar from "./components/navbar";
-// import Form from "./components/Form";
 import * as serviceWorker from "./serviceWorker";
 
 import * as firebase from "./components/Firebase/firebaseConfig";

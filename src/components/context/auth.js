@@ -18,10 +18,12 @@ export class AuthContextProvider extends React.Component {
 
   authListener() {
     firebase.auth().onAuthStateChanged(user => {
-      if (user) this.setState({ user });
+      if (user) this.setState({ user: user });
       else this.setState({ user: null });
     });
   }
+
+
 
   render() {
     return (

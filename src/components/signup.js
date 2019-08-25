@@ -10,16 +10,23 @@ class Register extends React.Component {
     //get the values of the imputs
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
+    const name = document.querySelector("#name").value;
 
     e.preventDefault();
     console.log("Button pressed");
 
-    const result = await firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password);
+    const redirect = {
+      url: "http://localhost:3000/"
+    };
 
     try {
-      result.user.sendEmailVerification();
+      const result = await firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password);
+      result.user.sendEmailVerification(redirect);
+      result.user.updateProfile({
+        displayName: name
+      });
       firebase.auth().signOut();
       console.log("User created");
     } catch (error) {
@@ -30,9 +37,9 @@ class Register extends React.Component {
   render() {
     return (
       <Form className="login-form">
-           <FormGroup>
-          <Label for="name">Name</Label>
-          <Input type="name" name="name" id="name" placeholder="Name" />
+        <FormGroup>
+          <Label for="name">User Name</Label>
+          <Input type="text" name="name" id="name" placeholder="User Name" />
         </FormGroup>
         <FormGroup>
           <Label for="email">Email</Label>
@@ -47,7 +54,7 @@ class Register extends React.Component {
             placeholder="Password"
           />
         </FormGroup>
-        <Button className="bnt-lg btn-block" onClick={this.loginWithEmail}>
+        <Button className="bnt-lg btn-block" onClick={this.createUser}>
           Sign up
         </Button>
       </Form>

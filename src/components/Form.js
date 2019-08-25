@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import "firebase/storage";
+import { AuthContext } from "./context/auth";
 import {
   Row,
   Col,
@@ -13,12 +15,12 @@ import {
   CardBody
 } from "reactstrap";
 
-import "./styles/form.css";
-
 export default class Appform extends Component {
+
+
   render() {
     return (
-      <div className="form-box">
+      <div className="m-4">
         <Form>
           <Col md={4}>
             <FormGroup>
@@ -196,8 +198,11 @@ export default class Appform extends Component {
             </Col>
           </Row>
           <Button size="sm">Submit</Button>
+          <Col xs="1"></Col>
         </Form>
       </div>
     );
   }
 }
+
+Appform.contextType = AuthContext;

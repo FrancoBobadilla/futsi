@@ -1,5 +1,4 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
 import firebase from "firebase/app";
 import { GoogleLoginButton } from "react-social-login-buttons";
 import {

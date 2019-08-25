@@ -18,6 +18,7 @@ import {
   ModalHeader,
   ModalBody
 } from "reactstrap";
+import { Link } from "react-router-dom";
 
 import "./styles/navbar.css";
 import fulbito from "../images/fulbito.png";
@@ -34,11 +35,13 @@ class NavigationBar extends React.Component {
 
     this.state = {
       dropdownOpen: false,
-      modal: false
+      modal: false,
+      collapsed: true
     };
   }
 
-  toggleModal() {
+  toggleModal(e) {
+    e.preventDefault();
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
@@ -46,7 +49,8 @@ class NavigationBar extends React.Component {
 
   toggle() {
     this.setState({
-      dropdownOpen: !this.state.dropdownOpen
+      dropdownOpen: !this.state.dropdownOpen,
+      collapsed: !this.state.collapsed
     });
   }
   signOut(e) {
@@ -63,8 +67,8 @@ class NavigationBar extends React.Component {
           <NavbarBrand href="/">
             <img src={fulbito} alt="futsi-icon"></img> futsi
           </NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
+          <NavbarToggler onClick={this.toggle} type="" />
+          <Collapse isOpen={!this.state.collapsed} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink href="/contact">Contact</NavLink>
@@ -75,11 +79,12 @@ class NavigationBar extends React.Component {
               <NavItem>
                 <NavLink href="/form">Form</NavLink>
               </NavItem>
+
               {this.context.user == null ? (
                 <Button
                   onClick={this.toggleModal}
                   size="sm"
-                  className="mt-1 ml-2"
+                  className="mt-0 ml-2"
                 >
                   Sign In
                 </Button>
@@ -89,7 +94,11 @@ class NavigationBar extends React.Component {
                     <img src={avatar} alt="avatar" id="avatar" />
                   </DropdownToggle>
                   <DropdownMenu right>
-                    <DropdownItem>My profile</DropdownItem>
+                    <DropdownItem>
+                      <Link to="/profile" className="text-decoration-none">
+                        My profile
+                      </Link>
+                    </DropdownItem>
                     <DropdownItem divider />
                     <DropdownItem>
                       <Button size="sm" onClick={this.signOut}>
@@ -110,43 +119,6 @@ class NavigationBar extends React.Component {
           </ModalBody>
         </Modal>
       </div>
-
-      // <div className="box">
-      //   <div className="navbar">
-      //     <Link to="/">
-      //       <img src={fulbito} alt="fulbito" id="fulbito"></img>
-      //     </Link>
-      //     <ul className="u-list">
-      //       <li>
-      //         <Link className="link" to="/">
-      //           Home
-      //         </Link>
-      //       </li>
-      //       <li>
-      //         <Link className="link" to="/contact">
-      //           Contact
-      //         </Link>
-      //       </li>
-      //       <li>
-      //         <Link className="link" to="/about">
-      //           About
-      //         </Link>
-      //       </li>
-      //       <li>
-      //         {this.context.user == null ? (
-      //           <Link to="/login" id="btnSignIn">
-      //             <button>Sign In</button>
-      //           </Link>
-      //         ) : (
-      //           <div>
-      //             <img src={avatar} alt="avatar" id="avatar" />
-      //             <button onClick={this.signOut}>Sign Out</button>
-      //           </div>
-      //         )}
-      //       </li>
-      //     </ul>
-      //   </div>
-      // </div>
     );
   }
 }

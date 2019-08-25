@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import "firebase/auth";
 
 import Home from "./components/home";
@@ -9,6 +9,7 @@ import Navbar from "./components/navbar";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Form from "./components/Form";
+import Profile from './components/Profile'
 import { AuthContext } from "./components/context/auth";
 
 class App extends React.Component {
@@ -18,6 +19,7 @@ class App extends React.Component {
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route path="/profile" component={Profile} />
           <Route path="/form" component={Form} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
